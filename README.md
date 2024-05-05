@@ -1,4 +1,4 @@
-RushPro is a hypixel bedwars overlay that displays information about various bedwars maps to give you the upper hand without memorizing a lot of things.
+RushPro is a hypixel bedwars overlay that displays information about various Hypixel Bedwars maps to give you the upper hand without memorizing a lot of things.
 
 I spent an hour trying to figure out how to display all the code on the github page and couldnt figure it out. So unfortunatly, you will have to download the .zip to view it.
 

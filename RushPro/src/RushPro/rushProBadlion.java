@@ -36,7 +36,7 @@ public class rushProBadlion {
     private Map<String, String> mapBlocks; // Map to store block count
     
     public rushProBadlion() {        
-        frame = new JFrame("Map Info (Badlion) v4");
+        frame = new JFrame("Map Info (Badlion)");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 110); // Increased height to accommodate two lines
         frame.setUndecorated(true); // Title bar visibility
@@ -187,17 +187,14 @@ public class rushProBadlion {
         mapGenSpeed.put("Waterfall","Side");
         mapGenSpeed.put("Yue","Side");
         mapGenSpeed.put("Zarzul","Side");
-        
         //Badlion port
         mapGenSpeed.put("Bio","Side");
         mapGenSpeed.put("Dragon","TBD");
-        mapGenSpeed.put("Hanging","Side");					
-        mapGenSpeed.put("Lucky","Side");					
-        mapGenSpeed.put("Scorched","Side");					
-        mapGenSpeed.put("Sky","Diamond");					
-        mapGenSpeed.put("Urban","Forward");					
-        
-        
+        mapGenSpeed.put("Hanging","Side");
+        mapGenSpeed.put("Lucky","Side");
+        mapGenSpeed.put("Scorched","Side");
+        mapGenSpeed.put("Sky","Diamond");
+        mapGenSpeed.put("Urban","Forward");
         
         //blocks needed
         mapBlocks.put("Acropolis","64");
@@ -260,7 +257,6 @@ public class rushProBadlion {
         mapBlocks.put("Waterfall","48");
         mapBlocks.put("Yue","64");
         mapBlocks.put("Zarzul","48");
-
         //Badlion port			
         mapBlocks.put("Bio","48");
         mapBlocks.put("Dragon","64");
@@ -269,7 +265,74 @@ public class rushProBadlion {
         mapBlocks.put("Scorched","64");
         mapBlocks.put("Sky","64");
         mapBlocks.put("Urban","64");
+        
+        //seasonal maps
+        //lunar new year
+        mapBlocks.put("Lunarhouse","48");
+        mapGenSpeed.put("Lunarhouse","");
+        //Easter
+        mapBlocks.put("Bloom","");
+        mapGenSpeed.put("Bloom","");
+        mapBlocks.put("Easter Basket","");
+        mapGenSpeed.put("Easter Basket","");
+        mapBlocks.put("Easter Garden","");
+        mapGenSpeed.put("Easter Garden","");
+        mapBlocks.put("Egg Hunt","");
+        mapGenSpeed.put("Egg Hunt","");
+        mapBlocks.put("Meadow","");
+        mapGenSpeed.put("Meadow","");
+        mapBlocks.put("Sunflower","");
+        mapGenSpeed.put("Sunflower","");
+        //Summer
+        mapBlocks.put("Fruitbrawl","");
+        mapGenSpeed.put("Fruitbrawl","");
+        mapBlocks.put("Gelato","");
+        mapGenSpeed.put("Gelato","");
+        mapBlocks.put("Montipora","");
+        mapGenSpeed.put("Montipora","");
+        mapBlocks.put("Symphonic","32-48");
+        mapGenSpeed.put("Symphonic","");
+        //Halloween
+        mapBlocks.put("Darkened","");
+        mapGenSpeed.put("Darkened","");
+        mapBlocks.put("Ghoulish","");
+        mapGenSpeed.put("Ghoulish","");
+        mapBlocks.put("Ominosity","48");
+        mapGenSpeed.put("Ominosity","Back diagonal");
+        mapBlocks.put("Scareshow","48");
+        mapGenSpeed.put("Scareshow","Diamond");
+        mapBlocks.put("Screamway","48");
+        mapGenSpeed.put("Screamway","Diamond");
+        mapBlocks.put("Steampumpkin","64");
+        mapGenSpeed.put("Steampumpkin","Back diagonal");
+        mapBlocks.put("Trick or Yeet","");
+        mapGenSpeed.put("Trick or Yeet","");
+        //Holidays
+        mapBlocks.put("Blitzen","48");
+        mapGenSpeed.put("Blitzen","Side");
+        mapBlocks.put("Fireplace","32");
+        mapGenSpeed.put("Fireplace","Side");
+        mapBlocks.put("Frosted","");
+        mapGenSpeed.put("Frosted","");
+        mapBlocks.put("Lotice","48");
+        mapGenSpeed.put("Lotice","Side");
+        mapBlocks.put("Nutcracker","64");
+        mapGenSpeed.put("Nutcracker","Diamond");
+        mapBlocks.put("Snowy Square","");
+        mapGenSpeed.put("Snowy Square","");
+        mapBlocks.put("Sweet Wonderland","");
+        mapGenSpeed.put("Sweet Wonderland","");
+        //badlion port
+        mapBlocks.put("Egg Hunt","");
+        mapGenSpeed.put("Egg","");
+        mapBlocks.put("Trick or Yeet","");
+        mapGenSpeed.put("Trick","");
+        mapBlocks.put("Snowy Square","");
+        mapGenSpeed.put("Snowy","");
+        mapBlocks.put("Sweet Wonderland","");
+        mapGenSpeed.put("Sweet","");
     }
+
 
 	private void updateMapName() {
         String userHome = System.getProperty("user.home");

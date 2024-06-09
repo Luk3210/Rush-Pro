@@ -36,7 +36,7 @@ public class rushProLunar {
     private Map<String, String> mapBlocks; // Map to store block count
     
     public rushProLunar() {        
-        frame = new JFrame("Map Info (Lunar");
+        frame = new JFrame("Map Info (Lunar)");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 110); // Increased height to accommodate two lines
         frame.setUndecorated(true); // Title bar visibility
@@ -145,7 +145,7 @@ public class rushProLunar {
         mapGenSpeed.put("Casita","Side");
         mapGenSpeed.put("Cliffside","Diamond");
         mapGenSpeed.put("Crogorm","Back diagonal");
-        mapGenSpeed.put("Crypt","Semi-mid");
+        mapGenSpeed.put("Crypt","Semi-mid island");
         mapGenSpeed.put("Deadwood","Diamond");
         mapGenSpeed.put("Dockyard","Side");
         mapGenSpeed.put("Dragon Light","TBD");
@@ -167,7 +167,7 @@ public class rushProLunar {
         mapGenSpeed.put("Nebuc","Side");
         mapGenSpeed.put("Orbit","Side");
         mapGenSpeed.put("Orchestra","Side");
-        mapGenSpeed.put("Pavilion","Side");
+        mapGenSpeed.put("Pavilion","Middle");
         mapGenSpeed.put("Pernicious","Who knows");
         mapGenSpeed.put("Playground","Diamond");
         mapGenSpeed.put("Polygon","Side");
@@ -178,7 +178,7 @@ public class rushProLunar {
         mapGenSpeed.put("Serenity","Side");
         mapGenSpeed.put("Siege","Side");
         mapGenSpeed.put("Sky Rise","Diamond");
-        mapGenSpeed.put("Slumber","Side");
+        mapGenSpeed.put("Slumber","Diamond");
         mapGenSpeed.put("Solace","Side");
         mapGenSpeed.put("Speedway","Diamond");
         mapGenSpeed.put("Steampunk","Back diagonal");
@@ -200,7 +200,7 @@ public class rushProLunar {
         
         //blocks needed
         mapBlocks.put("Acropolis","64");
-        mapBlocks.put("Aetius","64");
+        mapBlocks.put("Aetius","48");
         mapBlocks.put("Airshow","48");
         mapBlocks.put("Amazon","48");
         mapBlocks.put("Ambush","64");
@@ -211,7 +211,7 @@ public class rushProLunar {
         mapBlocks.put("Ashfire","48");
         mapBlocks.put("Bio-Hazard","48");
         mapBlocks.put("Blossom","64");
-        mapBlocks.put("Cascade","64");
+        mapBlocks.put("Cascade","48");
         mapBlocks.put("Casita","64");
         mapBlocks.put("Cliffside","64");
         mapBlocks.put("Crogorm","48");
@@ -234,7 +234,7 @@ public class rushProLunar {
         mapBlocks.put("Lucky Rush","64");
         mapBlocks.put("Meso","64");
         mapBlocks.put("Mirage","64");
-        mapBlocks.put("Nebuc","64");
+        mapBlocks.put("Nebuc","48");
         mapBlocks.put("Orbit","64");
         mapBlocks.put("Orchestra","32-48");
         mapBlocks.put("Pavilion","64");
@@ -255,7 +255,7 @@ public class rushProLunar {
         mapBlocks.put("Toro","48-64");
         mapBlocks.put("Tuzi","64");
         mapBlocks.put("Urban Plaza","64");
-        mapBlocks.put("Vigilante","64");
+        mapBlocks.put("Vigilante","32-48");
         mapBlocks.put("Waterfall","48");
         mapBlocks.put("Yue","64");
         mapBlocks.put("Zarzul","48");

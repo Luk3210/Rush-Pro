@@ -1,4 +1,4 @@
-RushPro is a hypixel bedwars overlay that displays information about various Hypixel Bedwars maps to give you the upper hand without memorizing a lot of things.
+RushPro is a Hypixel Bedwars overlay that displays information about various Hypixel Bedwars maps to give you the upper hand without memorizing a lot of things.
 
 You can download it on the releases page. The mc client's directory has to be at the default location provided during the client's install in order to work.
 

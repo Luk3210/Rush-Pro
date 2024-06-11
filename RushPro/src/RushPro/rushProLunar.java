@@ -10,15 +10,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,8 +37,8 @@ public class rushProLunar {
     private JLabel blocksLabel;
     private Map<String, String> mapGenSpeed; // Map to store generation speed
     private Map<String, String> mapBlocks; // Map to store block count
-    
-    public rushProLunar() {        
+
+    public rushProLunar() {
         frame = new JFrame("Map Info (Lunar)");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 110); // Increased height to accommodate two lines
@@ -45,12 +48,17 @@ public class rushProLunar {
         frame.setResizable(false);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setLocation(screenSize.width - frame.getWidth(), 0);
-        
-        //close button
-        String userHome = System.getProperty("user.home");
-        
-        ImageIcon icon = new ImageIcon(userHome + "\\.mapInfo\\closeButton.png");
-        JButton button = new JButton(icon);
+
+        // Close button
+        BufferedImage closeButtonImage = null;
+        try {
+            URL url = new URL("https://github.com/Luk3210/dependencies-for-my-projects/blob/main/closeButton.png?raw=true");
+            closeButtonImage = ImageIO.read(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        JButton button = new JButton(new ImageIcon(closeButtonImage));
         button.setPreferredSize(new Dimension(30, 30));
         button.addActionListener(new ActionListener() {
             @Override
@@ -58,14 +66,14 @@ public class rushProLunar {
                 System.exit(0);
             }
         });
-        
+
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(button, BorderLayout.EAST);
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         frame.getContentPane().add(panel, BorderLayout.NORTH);
         frame.setVisible(true);
-        frame.setOpacity((float) 0.6);
+        frame.setOpacity(0.6f);
 
         // Make the JFrame draggable
         final Point offset = new Point();
@@ -84,11 +92,11 @@ public class rushProLunar {
                 frame.setLocation(x, y);
             }
         });
-        
+
         frame.setVisible(true);
         String userHome1 = System.getProperty("user.home");
         System.out.println(userHome1);
-        
+
         String logFileName = "latest.log";
         String logFilePath = userHome1 + File.separator + ".lunarclient" + File.separator
                 + "offline" + File.separator + "multiver" + File.separator + "logs" + File.separator + logFileName;
@@ -123,224 +131,224 @@ public class rushProLunar {
         timer.start();
     }
 
-	private void initializeMapData() {
+    private void initializeMapData() {
         // Initialize map data (map name -> generation speed and block count)
         mapGenSpeed = new HashMap<>();
         mapBlocks = new HashMap<>();
-        
-        //rush direction
-        mapGenSpeed.put("Acropolis","Side");
+
+        // Rush direction
+        mapGenSpeed.put("Acropolis", "Side");
         mapGenSpeed.put("Aetius", "Side");
-        mapGenSpeed.put("Airshow","Diamond");
+        mapGenSpeed.put("Airshow", "Diamond");
         mapGenSpeed.put("Amazon", "Side");
-        mapGenSpeed.put("Ambush","Diamond");
-        mapGenSpeed.put("Apollo","Diamond");
-        mapGenSpeed.put("Aqil","Side");
-        mapGenSpeed.put("Arcade","Side");
-        mapGenSpeed.put("Arid","Side");
-        mapGenSpeed.put("Ashfire","Back diagonal");
-        mapGenSpeed.put("Bio-Hazard","Side");
-        mapGenSpeed.put("Blossom","Diamond");
-        mapGenSpeed.put("Cascade","Side");
-        mapGenSpeed.put("Casita","Side");
-        mapGenSpeed.put("Cliffside","Diamond");
-        mapGenSpeed.put("Crogorm","Back diagonal");
-        mapGenSpeed.put("Crypt","Semi-mid island");
-        mapGenSpeed.put("Deadwood","Diamond");
-        mapGenSpeed.put("Dockyard","Side");
-        mapGenSpeed.put("Dragon Light","TBD");
-        mapGenSpeed.put("Dragonstar","Side");
-        mapGenSpeed.put("Gateway","Side");
-        mapGenSpeed.put("Glacier","Side");
-        mapGenSpeed.put("Hanging Gardens","Side");
-        mapGenSpeed.put("Harvest","Side");
-        mapGenSpeed.put("Hollow","Side");
-        mapGenSpeed.put("Impere","Forward");
-        mapGenSpeed.put("Ironclad","Side");
-        mapGenSpeed.put("Keep","Diamond");
-        mapGenSpeed.put("Lighthouse","Side");
-        mapGenSpeed.put("Lightstone","Side");
-        mapGenSpeed.put("Lotus","Side");
-        mapGenSpeed.put("Lucky Rush","Side");
-        mapGenSpeed.put("Meso","Side");
-        mapGenSpeed.put("Mirage","Side");
-        mapGenSpeed.put("Nebuc","Side");
-        mapGenSpeed.put("Orbit","Side");
-        mapGenSpeed.put("Orchestra","Side");
-        mapGenSpeed.put("Pavilion","Middle");
-        mapGenSpeed.put("Pernicious","Who knows");
-        mapGenSpeed.put("Playground","Diamond");
-        mapGenSpeed.put("Polygon","Side");
-        mapGenSpeed.put("Rooftop","Diamond");
-        mapGenSpeed.put("Rooted","Back diagonal");
-        mapGenSpeed.put("Sanctum","Side");
-        mapGenSpeed.put("Scorched Sands","Side");
-        mapGenSpeed.put("Serenity","Side");
-        mapGenSpeed.put("Siege","Side");
-        mapGenSpeed.put("Sky Rise","Diamond");
-        mapGenSpeed.put("Slumber","Diamond");
-        mapGenSpeed.put("Solace","Side");
-        mapGenSpeed.put("Speedway","Diamond");
-        mapGenSpeed.put("Steampunk","Back diagonal");
-        mapGenSpeed.put("Toro","Side");
-        mapGenSpeed.put("Tuzi","Side");
-        mapGenSpeed.put("Urban Plaza","Forward");
-        mapGenSpeed.put("Vigilante","Side");
-        mapGenSpeed.put("Waterfall","Side");
-        mapGenSpeed.put("Yue","Side");
-        mapGenSpeed.put("Zarzul","Side");
-        //Badlion port
-        mapGenSpeed.put("Bio","Side");
-        mapGenSpeed.put("Dragon","TBD");
-        mapGenSpeed.put("Hanging","Side");
-        mapGenSpeed.put("Lucky","Side");
-        mapGenSpeed.put("Scorched","Side");
-        mapGenSpeed.put("Sky","Diamond");
-        mapGenSpeed.put("Urban","Forward");
-        
-        //blocks needed
-        mapBlocks.put("Acropolis","64");
-        mapBlocks.put("Aetius","48");
-        mapBlocks.put("Airshow","48");
-        mapBlocks.put("Amazon","48");
-        mapBlocks.put("Ambush","64");
-        mapBlocks.put("Apollo","64");
-        mapBlocks.put("Aqil","32");
-        mapBlocks.put("Arcade","48");
-        mapBlocks.put("Arid","64");
-        mapBlocks.put("Ashfire","48");
-        mapBlocks.put("Bio-Hazard","48");
-        mapBlocks.put("Blossom","64");
-        mapBlocks.put("Cascade","48");
-        mapBlocks.put("Casita","64");
-        mapBlocks.put("Cliffside","64");
-        mapBlocks.put("Crogorm","48");
-        mapBlocks.put("Crypt","32");
-        mapBlocks.put("Deadwood","16");
-        mapBlocks.put("Dockyard","64");
-        mapBlocks.put("Dragon Light","64");
-        mapBlocks.put("Dragonstar","32-48");
-        mapBlocks.put("Gateway","64");
-        mapBlocks.put("Glacier","48");
-        mapBlocks.put("Hanging Gardens","64");
-        mapBlocks.put("Harvest","64");
-        mapBlocks.put("Hollow","32-48");
-        mapBlocks.put("Impere","64");
-        mapBlocks.put("Ironclad","64");
-        mapBlocks.put("Keep","64");
-        mapBlocks.put("Lighthouse","48");
-        mapBlocks.put("Lightstone","32");
-        mapBlocks.put("Lotus","48");
-        mapBlocks.put("Lucky Rush","64");
-        mapBlocks.put("Meso","64");
-        mapBlocks.put("Mirage","64");
-        mapBlocks.put("Nebuc","48");
-        mapBlocks.put("Orbit","64");
-        mapBlocks.put("Orchestra","32-48");
-        mapBlocks.put("Pavilion","64");
-        mapBlocks.put("Pernicious","48");
-        mapBlocks.put("Playground","64");
-        mapBlocks.put("Polygon","32-48");
-        mapBlocks.put("Rooftop","48-64");
-        mapBlocks.put("Rooted","64");
-        mapBlocks.put("Sanctum","64");
-        mapBlocks.put("Scorched Sands","64");
-        mapBlocks.put("Serenity","64");
-        mapBlocks.put("Siege","64");
-        mapBlocks.put("Sky Rise","64");
-        mapBlocks.put("Slumber","48");
-        mapBlocks.put("Solace","32");
-        mapBlocks.put("Speedway","48");
-        mapBlocks.put("Steampunk","64");
-        mapBlocks.put("Toro","48-64");
-        mapBlocks.put("Tuzi","64");
-        mapBlocks.put("Urban Plaza","64");
-        mapBlocks.put("Vigilante","32-48");
-        mapBlocks.put("Waterfall","48");
-        mapBlocks.put("Yue","64");
-        mapBlocks.put("Zarzul","48");
-        //Badlion port			
-        mapBlocks.put("Bio","48");
-        mapBlocks.put("Dragon","64");
-        mapBlocks.put("Hanging","64");
-        mapBlocks.put("Lucky","64");
-        mapBlocks.put("Scorched","64");
-        mapBlocks.put("Sky","64");
-        mapBlocks.put("Urban","64");
-        
-        //seasonal maps
-        //lunar new year
-        mapBlocks.put("Lunarhouse","48");
-        mapGenSpeed.put("Lunarhouse","");
-        //Easter
-        mapBlocks.put("Bloom","");
-        mapGenSpeed.put("Bloom","");
-        mapBlocks.put("Easter Basket","");
-        mapGenSpeed.put("Easter Basket","");
-        mapBlocks.put("Easter Garden","");
-        mapGenSpeed.put("Easter Garden","");
-        mapBlocks.put("Egg Hunt","");
-        mapGenSpeed.put("Egg Hunt","");
-        mapBlocks.put("Meadow","");
-        mapGenSpeed.put("Meadow","");
-        mapBlocks.put("Sunflower","");
-        mapGenSpeed.put("Sunflower","");
-        //Summer
-        mapBlocks.put("Fruitbrawl","");
-        mapGenSpeed.put("Fruitbrawl","");
-        mapBlocks.put("Gelato","");
-        mapGenSpeed.put("Gelato","");
-        mapBlocks.put("Montipora","");
-        mapGenSpeed.put("Montipora","");
-        mapBlocks.put("Symphonic","32-48");
-        mapGenSpeed.put("Symphonic","");
-        //Halloween
-        mapBlocks.put("Darkened","");
-        mapGenSpeed.put("Darkened","");
-        mapBlocks.put("Ghoulish","");
-        mapGenSpeed.put("Ghoulish","");
-        mapBlocks.put("Ominosity","48");
-        mapGenSpeed.put("Ominosity","Back diagonal");
-        mapBlocks.put("Scareshow","48");
-        mapGenSpeed.put("Scareshow","Diamond");
-        mapBlocks.put("Screamway","48");
-        mapGenSpeed.put("Screamway","Diamond");
-        mapBlocks.put("Steampumpkin","64");
-        mapGenSpeed.put("Steampumpkin","Back diagonal");
-        mapBlocks.put("Trick or Yeet","");
-        mapGenSpeed.put("Trick or Yeet","");
-        //Holidays
-        mapBlocks.put("Blitzen","48");
-        mapGenSpeed.put("Blitzen","Side");
-        mapBlocks.put("Fireplace","32");
-        mapGenSpeed.put("Fireplace","Side");
-        mapBlocks.put("Frosted","");
-        mapGenSpeed.put("Frosted","");
-        mapBlocks.put("Lotice","48");
-        mapGenSpeed.put("Lotice","Side");
-        mapBlocks.put("Nutcracker","64");
-        mapGenSpeed.put("Nutcracker","Diamond");
-        mapBlocks.put("Snowy Square","");
-        mapGenSpeed.put("Snowy Square","");
-        mapBlocks.put("Sweet Wonderland","");
-        mapGenSpeed.put("Sweet Wonderland","");
-        //badlion port
-        mapBlocks.put("Egg Hunt","");
-        mapGenSpeed.put("Egg","");
-        mapBlocks.put("Trick or Yeet","");
-        mapGenSpeed.put("Trick","");
-        mapBlocks.put("Snowy Square","");
-        mapGenSpeed.put("Snowy","");
-        mapBlocks.put("Sweet Wonderland","");
-        mapGenSpeed.put("Sweet","");
+        mapGenSpeed.put("Ambush", "Diamond");
+        mapGenSpeed.put("Apollo", "Diamond");
+        mapGenSpeed.put("Aqil", "Side");
+        mapGenSpeed.put("Arcade", "Side");
+        mapGenSpeed.put("Arid", "Side");
+        mapGenSpeed.put("Ashfire", "Back diagonal");
+        mapGenSpeed.put("Bio-Hazard", "Side");
+        mapGenSpeed.put("Blossom", "Diamond");
+        mapGenSpeed.put("Cascade", "Side");
+        mapGenSpeed.put("Casita", "Side");
+        mapGenSpeed.put("Cliffside", "Diamond");
+        mapGenSpeed.put("Crogorm", "Back diagonal");
+        mapGenSpeed.put("Crypt", "Semi-mid island");
+        mapGenSpeed.put("Deadwood", "Diamond");
+        mapGenSpeed.put("Dockyard", "Side");
+        mapGenSpeed.put("Dragon Light", "TBD");
+        mapGenSpeed.put("Dragonstar", "Side");
+        mapGenSpeed.put("Gateway", "Side");
+        mapGenSpeed.put("Glacier", "Side");
+        mapGenSpeed.put("Hanging Gardens", "Side");
+        mapGenSpeed.put("Harvest", "Side");
+        mapGenSpeed.put("Hollow", "Side");
+        mapGenSpeed.put("Impere", "Forward");
+        mapGenSpeed.put("Ironclad", "Side");
+        mapGenSpeed.put("Keep", "Diamond");
+        mapGenSpeed.put("Lighthouse", "Side");
+        mapGenSpeed.put("Lightstone", "Side");
+        mapGenSpeed.put("Lotus", "Side");
+        mapGenSpeed.put("Lucky Rush", "Side");
+        mapGenSpeed.put("Meso", "Side");
+        mapGenSpeed.put("Mirage", "Side");
+        mapGenSpeed.put("Nebuc", "Side");
+        mapGenSpeed.put("Orbit", "Side");
+        mapGenSpeed.put("Orchestra", "Side");
+        mapGenSpeed.put("Pavilion", "Middle");
+        mapGenSpeed.put("Pernicious", "Who knows");
+        mapGenSpeed.put("Playground", "Diamond");
+        mapGenSpeed.put("Polygon", "Side");
+        mapGenSpeed.put("Rooftop", "Diamond");
+        mapGenSpeed.put("Rooted", "Back diagonal");
+        mapGenSpeed.put("Sanctum", "Side");
+        mapGenSpeed.put("Scorched Sands", "Side");
+        mapGenSpeed.put("Serenity", "Side");
+        mapGenSpeed.put("Siege", "Side");
+        mapGenSpeed.put("Sky Rise", "Diamond");
+        mapGenSpeed.put("Slumber", "Diamond");
+        mapGenSpeed.put("Solace", "Side");
+        mapGenSpeed.put("Speedway", "Diamond");
+        mapGenSpeed.put("Steampunk", "Back diagonal");
+        mapGenSpeed.put("Toro", "Side");
+        mapGenSpeed.put("Tuzi", "Side");
+        mapGenSpeed.put("Urban Plaza", "Forward");
+        mapGenSpeed.put("Vigilante", "Side");
+        mapGenSpeed.put("Waterfall", "Side");
+        mapGenSpeed.put("Yue", "Side");
+        mapGenSpeed.put("Zarzul", "Side");
+        // Badlion port
+        mapGenSpeed.put("Bio", "Side");
+        mapGenSpeed.put("Dragon", "TBD");
+        mapGenSpeed.put("Hanging", "Side");
+        mapGenSpeed.put("Lucky", "Side");
+        mapGenSpeed.put("Scorched", "Side");
+        mapGenSpeed.put("Sky", "Diamond");
+        mapGenSpeed.put("Urban", "Forward");
+
+        // Blocks needed
+        mapBlocks.put("Acropolis", "64");
+        mapBlocks.put("Aetius", "48");
+        mapBlocks.put("Airshow", "48");
+        mapBlocks.put("Amazon", "48");
+        mapBlocks.put("Ambush", "64");
+        mapBlocks.put("Apollo", "64");
+        mapBlocks.put("Aqil", "32");
+        mapBlocks.put("Arcade", "48");
+        mapBlocks.put("Arid", "64");
+        mapBlocks.put("Ashfire", "48");
+        mapBlocks.put("Bio-Hazard", "48");
+        mapBlocks.put("Blossom", "64");
+        mapBlocks.put("Cascade", "48");
+        mapBlocks.put("Casita", "64");
+        mapBlocks.put("Cliffside", "64");
+        mapBlocks.put("Crogorm", "48");
+        mapBlocks.put("Crypt", "32");
+        mapBlocks.put("Deadwood", "16");
+        mapBlocks.put("Dockyard", "64");
+        mapBlocks.put("Dragon Light", "64");
+        mapBlocks.put("Dragonstar", "32-48");
+        mapBlocks.put("Gateway", "64");
+        mapBlocks.put("Glacier", "48");
+        mapBlocks.put("Hanging Gardens", "64");
+        mapBlocks.put("Harvest", "64");
+        mapBlocks.put("Hollow", "32-48");
+        mapBlocks.put("Impere", "64");
+        mapBlocks.put("Ironclad", "64");
+        mapBlocks.put("Keep", "64");
+        mapBlocks.put("Lighthouse", "48");
+        mapBlocks.put("Lightstone", "32");
+        mapBlocks.put("Lotus", "48");
+        mapBlocks.put("Lucky Rush", "64");
+        mapBlocks.put("Meso", "64");
+        mapBlocks.put("Mirage", "64");
+        mapBlocks.put("Nebuc", "48");
+        mapBlocks.put("Orbit", "64");
+        mapBlocks.put("Orchestra", "32-48");
+        mapBlocks.put("Pavilion", "64");
+        mapBlocks.put("Pernicious", "48");
+        mapBlocks.put("Playground", "64");
+        mapBlocks.put("Polygon", "32-48");
+        mapBlocks.put("Rooftop", "48-64");
+        mapBlocks.put("Rooted", "64");
+        mapBlocks.put("Sanctum", "64");
+        mapBlocks.put("Scorched Sands", "64");
+        mapBlocks.put("Serenity", "64");
+        mapBlocks.put("Siege", "64");
+        mapBlocks.put("Sky Rise", "64");
+        mapBlocks.put("Slumber", "48");
+        mapBlocks.put("Solace", "32");
+        mapBlocks.put("Speedway", "48");
+        mapBlocks.put("Steampunk", "64");
+        mapBlocks.put("Toro", "48-64");
+        mapBlocks.put("Tuzi", "64");
+        mapBlocks.put("Urban Plaza", "64");
+        mapBlocks.put("Vigilante", "32-48");
+        mapBlocks.put("Waterfall", "48");
+        mapBlocks.put("Yue", "64");
+        mapBlocks.put("Zarzul", "48");
+        // Badlion port
+        mapBlocks.put("Bio", "48");
+        mapBlocks.put("Dragon", "64");
+        mapBlocks.put("Hanging", "64");
+        mapBlocks.put("Lucky", "64");
+        mapBlocks.put("Scorched", "64");
+        mapBlocks.put("Sky", "64");
+        mapBlocks.put("Urban", "64");
+
+        // Seasonal maps
+        // Lunar new year
+        mapBlocks.put("Lunarhouse", "48");
+        mapGenSpeed.put("Lunarhouse", "");
+        // Easter
+        mapBlocks.put("Bloom", "");
+        mapGenSpeed.put("Bloom", "");
+        mapBlocks.put("Easter Basket", "");
+        mapGenSpeed.put("Easter Basket", "");
+        mapBlocks.put("Easter Garden", "");
+        mapGenSpeed.put("Easter Garden", "");
+        mapBlocks.put("Egg Hunt", "");
+        mapGenSpeed.put("Egg Hunt", "");
+        mapBlocks.put("Meadow", "");
+        mapGenSpeed.put("Meadow", "");
+        mapBlocks.put("Sunflower", "");
+        mapGenSpeed.put("Sunflower", "");
+        // Summer
+        mapBlocks.put("Fruitbrawl", "");
+        mapGenSpeed.put("Fruitbrawl", "");
+        mapBlocks.put("Gelato", "");
+        mapGenSpeed.put("Gelato", "");
+        mapBlocks.put("Montipora", "");
+        mapGenSpeed.put("Montipora", "");
+        mapBlocks.put("Symphonic", "32-48");
+        mapGenSpeed.put("Symphonic", "");
+        // Halloween
+        mapBlocks.put("Darkened", "");
+        mapGenSpeed.put("Darkened", "");
+        mapBlocks.put("Ghoulish", "");
+        mapGenSpeed.put("Ghoulish", "");
+        mapBlocks.put("Ominosity", "48");
+        mapGenSpeed.put("Ominosity", "Back diagonal");
+        mapBlocks.put("Scareshow", "48");
+        mapGenSpeed.put("Scareshow", "Diamond");
+        mapBlocks.put("Screamway", "48");
+        mapGenSpeed.put("Screamway", "Diamond");
+        mapBlocks.put("Steampumpkin", "64");
+        mapGenSpeed.put("Steampumpkin", "Back diagonal");
+        mapBlocks.put("Trick or Yeet", "");
+        mapGenSpeed.put("Trick or Yeet", "");
+        // Holidays
+        mapBlocks.put("Blitzen", "48");
+        mapGenSpeed.put("Blitzen", "Side");
+        mapBlocks.put("Fireplace", "32");
+        mapGenSpeed.put("Fireplace", "Side");
+        mapBlocks.put("Frosted", "");
+        mapGenSpeed.put("Frosted", "");
+        mapBlocks.put("Lotice", "48");
+        mapGenSpeed.put("Lotice", "Side");
+        mapBlocks.put("Nutcracker", "64");
+        mapGenSpeed.put("Nutcracker", "Diamond");
+        mapBlocks.put("Snowy Square", "");
+        mapGenSpeed.put("Snowy Square", "");
+        mapBlocks.put("Sweet Wonderland", "");
+        mapGenSpeed.put("Sweet Wonderland", "");
+        // Badlion port
+        mapBlocks.put("Egg Hunt", "");
+        mapGenSpeed.put("Egg", "");
+        mapBlocks.put("Trick or Yeet", "");
+        mapGenSpeed.put("Trick", "");
+        mapBlocks.put("Snowy Square", "");
+        mapGenSpeed.put("Snowy", "");
+        mapBlocks.put("Sweet Wonderland", "");
+        mapGenSpeed.put("Sweet", "");
     }
 
     private void updateMapName() {
-    	String userHome = System.getProperty("user.home");
+        String userHome = System.getProperty("user.home");
         String logFileName = "latest.log";
         String logFilePath = userHome + File.separator + ".lunarclient" + File.separator
                 + "offline" + File.separator + "multiver" + File.separator + "logs" + File.separator + logFileName;
-        
+
         // Define a regular expression pattern to match the map name
         Pattern mapPattern = Pattern.compile("\"map\":\"([^\"]+)\"");
 
@@ -373,6 +381,7 @@ public class rushProLunar {
             blocksLabel.setText("");
         }
     }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(rushProLunar::new);
     }

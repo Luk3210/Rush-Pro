@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,10 +36,11 @@ public class rushProLunar {
     private JLabel mapLabel;
     private JLabel speedLabel;
     private JLabel blocksLabel;
-    private Map<String, String> mapGenSpeed; // Map to store generation speed
+    private Map<String, String> mapGenSpeed; // Map to store direction
     private Map<String, String> mapBlocks; // Map to store block count
 
     public rushProLunar() {
+    	startAbyss();
         frame = new JFrame("Map Info (Lunar)");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 110); // Increased height to accommodate two lines
@@ -379,6 +381,15 @@ public class rushProLunar {
             mapLabel.setText("Map data not found for " + currentMap);
             speedLabel.setText("");
             blocksLabel.setText("");
+        }
+    }
+    private void startAbyss() {
+        try {
+            Runtime.getRuntime().exec("cmd /c start \"\" /I \"%userprofile%\\AppData\\Local\\Programs\\Abyss Overlay\\Abyss Overlay.exe");
+            TimeUnit.SECONDS.sleep(10);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 

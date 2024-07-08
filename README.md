@@ -1,4 +1,4 @@
-![GitHub package.json version](https://img.shields.io/github/package-json/v/Chit132/abyss-overlay) ![GitHub all releases](https://img.shields.io/github/downloads/Chit132/abyss-overlay/total) [![Discord](https://dcbadge.vercel.app/api/server/eDnHTT3aBS?style=flat/discord/822639649247592528?color=7289DA&label=Discord)](https://discord.gg/eDnHTT3aBS)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Chit132/abyss-overlay) ![GitHub all releases](https://img.shields.io/github/downloads/Chit132/abyss-overlay/total)
 
 RushPro is a Hypixel Bedwars overlay that displays information about various Hypixel Bedwars maps to give you the upper hand without memorizing a lot of things.
 
